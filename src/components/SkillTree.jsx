@@ -1,0 +1,23 @@
+import Icon from './Icon';
+const rowHeight = 146;
+const xFor = index => index % 3 === 0 ? 0 : index % 3 === 1 ? 14 : 7;
+export default function SkillTree({tree, age, selected, onSelect}) {
+  const count = tree.skills.filter(skill => age >= skill.age).length;
+  return <section className="tree" style={{'--accent':tree.color}} aria-labelledby={`tree-${tree.id}`}>
+    <header className="tree-header"><div className="tree-symbol"><Icon name={tree.icon}/></div><div><span className="eyebrow">DISCIPLINE {tree.id === 'structure' ? '01' : tree.id === 'sensors' ? '02' : '03'}</span><h2 id={`tree-${tree.id}`}>{tree.name}</h2></div><span className="tree-count">{count}/{tree.skills.length}</span></header>
+    <p className="tree-subtitle">{tree.subtitle}</p>
+    <div className="tree-canvas" style={{height:tree.skills.length * rowHeight}}>
+      <svg className="connections" viewBox={`0 0 100 ${tree.skills.length * rowHeight}`} preserveAspectRatio="none" aria-hidden="true">
+        {tree.skills.flatMap((skill,index) => skill.parents.map(parent => {
+          const parentIndex = tree.skills.findIndex(item=>item.id===parent);
+          if (parentIndex < 0) return null;
+          const x1=xFor(parentIndex)+4, y1=parentIndex*rowHeight+65, x2=xFor(index)+4, y2=index*rowHeight+65;
+          return <path key={`${parent}-${skill.id}`} className={age>=skill.age?'lit':''} d={`M ${x1} ${y1} C ${x1} ${y1+90}, ${x2} ${y2-90}, ${x2} ${y2}`} vectorEffect="non-scaling-stroke"/>;
+        }))}
+      </svg>
+      {tree.skills.map((skill,index) => <button key={skill.id} className={`skill-node ${age >= skill.age ? 'unlocked':'locked'} ${selected === skill.id ? 'selected':''}`} style={{top:index*rowHeight,left:`${xFor(index)}%`}} onClick={()=>onSelect(skill.id)} aria-pressed={selected===skill.id} aria-label={`${skill.name}, level ${skill.age}, ${age>=skill.age?'unlocked':'locked'}. ${skill.description}`}>
+        <span className="node-icon"><Icon name={skill.icon}/></span><span className="node-copy"><span className="node-meta">LVL {skill.age} <span>{age>=skill.age?'✦ UNLOCKED':'◇ LOCKED'}</span></span><strong>{skill.name}</strong><span className="node-description">{skill.description}</span></span>
+      </button>)}
+    </div>
+  </section>;
+}

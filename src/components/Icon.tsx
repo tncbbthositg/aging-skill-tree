@@ -1,4 +1,5 @@
 import type { ReactNode, SVGProps } from 'react';
+
 import type { IconName } from '../types';
 
 type IconProps = SVGProps<SVGSVGElement> & { name: IconName };
@@ -42,6 +43,7 @@ const paths: Record<IconName, ReactNode> = {
   drop: <path d="M12 2S5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13Z" />,
   star: <path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z" />,
 };
+
 export default function Icon({ name, ...props }: IconProps) {
   return (
     <svg

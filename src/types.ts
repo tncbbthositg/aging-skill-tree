@@ -12,6 +12,7 @@ export type IconName =
   | 'thermometer'
   | 'drop'
   | 'star';
+
 export type AbilityType = 'Passive' | 'Active ability';
 export type TreeId = 'structure' | 'sensors' | 'recovery';
 

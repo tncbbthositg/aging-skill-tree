@@ -16,17 +16,21 @@
     line-height: normal;
     color-scheme: dark;
   }
+
   body {
     background: radial-gradient(ellipse at 80% 0%, #29311d55, transparent 35%);
   }
+
   button,
   input,
   a {
     -webkit-tap-highlight-color: transparent;
   }
+
   button {
     cursor: pointer;
   }
+
   button:focus-visible,
   a:focus-visible,
   input:focus-visible {
@@ -45,6 +49,7 @@ input[type='range']::-webkit-slider-thumb {
   border: 4px solid #20271c;
   box-shadow: 0 0 0 1px #c9dfa1;
 }
+
 input[type='range']::-moz-range-thumb {
   height: 14px;
   width: 14px;

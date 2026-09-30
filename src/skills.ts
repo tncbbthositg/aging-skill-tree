@@ -11,6 +11,7 @@ const skill = (
   parents: string[] = [],
   type: AbilityType = 'Passive',
 ): Skill => ({ id, age, name, description, icon, parents, type });
+
 export const trees: SkillDiscipline[] = [
   {
     id: 'structure',
@@ -270,21 +271,31 @@ export const trees: SkillDiscipline[] = [
     ],
   },
 ];
+
 export const allSkills = trees.flatMap((tree) => tree.skills);
 export const legendaryIds = ['thermostat', 'stairs', 'nap'];
+
 export function parseAge(value: string | number | null | undefined): number {
-  if (value == null || String(value).trim() === '') return 45;
+  if (value == null || String(value).trim() === '') {
+    return 45;
+  }
+
   const number = Number(value);
+
   return Number.isFinite(number) ? Math.max(20, Math.min(80, Math.round(number))) : 45;
 }
+
 export const unlockedSkills = (age: number): Skill[] =>
   allSkills.filter((skill) => age >= skill.age);
+
 export const hasLegendary = (age: number): boolean =>
   legendaryIds.every((id) => {
     const skill = allSkills.find((skill) => skill.id === id);
+
     return skill !== undefined && age >= skill.age;
   });
 
 const eyesightIds = new Set(['focus', 'low-light', 'contrast', 'flashlight', 'reading', 'scaling']);
+
 export const eyesightUnlocks = (age: number): number =>
   unlockedSkills(age).filter((skill) => eyesightIds.has(skill.id)).length;

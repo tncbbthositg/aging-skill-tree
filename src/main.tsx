@@ -1,7 +1,14 @@
 import type { CSSVariables, TreeId } from './types';
 import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { trees, allSkills, parseAge, unlockedSkills, hasLegendary } from './skills';
+import {
+  trees,
+  allSkills,
+  parseAge,
+  unlockedSkills,
+  hasLegendary,
+  eyesightUnlocks,
+} from './skills';
 import SkillTree from './components/SkillTree';
 import Icon from './components/Icon';
 import './style.css';
@@ -24,6 +31,13 @@ function App() {
     history.replaceState(null, '', url);
     setShareMessage('');
     setShareFallback('');
+  }, [age]);
+  useEffect(() => {
+    const steps = eyesightUnlocks(age);
+    document.documentElement.style.fontSize = `${100 + steps * 6.25}%`;
+    return () => {
+      document.documentElement.style.removeProperty('font-size');
+    };
   }, [age]);
   async function share() {
     try {

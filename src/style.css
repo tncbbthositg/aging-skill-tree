@@ -50,7 +50,7 @@ a {
   display: flex;
   gap: 12px;
   align-items: center;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 2px;
 }
@@ -59,7 +59,7 @@ a {
 }
 .version {
   font:
-    10px 'Space Grotesk',
+    0.625rem 'Space Grotesk',
     monospace;
   letter-spacing: 1.5px;
   color: #a3aa96;
@@ -81,7 +81,7 @@ main {
 }
 .eyebrow {
   font:
-    600 10px 'Space Grotesk',
+    600 0.625rem 'Space Grotesk',
     sans-serif;
   letter-spacing: 1.8px;
   margin: 0 0 12px;
@@ -89,7 +89,7 @@ main {
 }
 h1 {
   font:
-    500 clamp(38px, 5.5vw, 76px)/1.05 'Space Grotesk',
+    500 clamp(2.375rem, 5.5vw, 4.75rem)/1.05 'Space Grotesk',
     sans-serif;
   letter-spacing: -4px;
   margin: 20px 0;
@@ -98,14 +98,14 @@ h1 span {
   color: #bbd98a;
 }
 .intro {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.65;
   color: #aab19f;
   margin: 0;
 }
 .hero-seal {
-  height: 140px;
-  width: 140px;
+  height: 8.75rem;
+  width: 8.75rem;
   border: 1px solid #82956555;
   border-radius: 50%;
   display: flex;
@@ -115,7 +115,7 @@ h1 span {
   transform: rotate(12deg);
   text-align: center;
   font:
-    10px/1.7 'Space Grotesk',
+    0.625rem/1.7 'Space Grotesk',
     sans-serif;
   letter-spacing: 2px;
   color: #bcd393;
@@ -135,16 +135,16 @@ h1 span {
   min-width: 100px;
 }
 .level .eyebrow {
-  font-size: 9px;
+  font-size: 0.5625rem;
 }
 .level > div {
   font:
-    500 48px/1 'Space Grotesk',
+    500 3rem/1 'Space Grotesk',
     sans-serif;
   letter-spacing: -2px;
 }
 .level > div span {
-  font: 12px 'DM Sans';
+  font: 0.75rem 'DM Sans';
   letter-spacing: 0;
   color: #a2ad95;
   padding-left: 8px;
@@ -155,7 +155,7 @@ h1 span {
 .slider-label {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 0.75rem;
   margin-bottom: 14px;
   gap: 14px;
 }
@@ -192,7 +192,7 @@ input[type='range']::-moz-range-thumb {
 .range-labels {
   display: flex;
   justify-content: space-between;
-  font: 9px 'Space Grotesk';
+  font: 0.5625rem 'Space Grotesk';
   letter-spacing: 1px;
   color: #aab49d;
 }
@@ -202,7 +202,7 @@ input[type='range']::-moz-range-thumb {
   border: 0;
   border-radius: 7px;
   padding: 14px 18px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -214,7 +214,7 @@ input[type='range']::-moz-range-thumb {
 }
 .share-status {
   min-height: 28px;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #c6dd9e;
   padding: 6px 0;
 }
@@ -240,28 +240,28 @@ input[type='range']::-moz-range-thumb {
   color: #e2cd8f;
 }
 .legendary > svg {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   flex-shrink: 0;
 }
 .legendary .eyebrow {
   color: inherit;
-  font-size: 9px;
+  font-size: 0.5625rem;
   margin-bottom: 5px;
 }
 .legendary h2 {
-  font: 500 18px 'Space Grotesk';
+  font: 500 1.125rem 'Space Grotesk';
   margin: 0 0 5px;
 }
 .legendary p:last-child {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #b9b9a6;
   margin: 0;
   line-height: 1.5;
 }
 .legendary-tag {
   margin-left: auto;
-  font: 9px 'Space Grotesk';
+  font: 0.5625rem 'Space Grotesk';
   letter-spacing: 1px;
   white-space: nowrap;
 }
@@ -272,12 +272,12 @@ input[type='range']::-moz-range-thumb {
   margin: 44px 0 20px;
 }
 .tree-toolbar p {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #c4cbb9;
   margin: 0;
 }
 .tree-toolbar .eyebrow {
-  font-size: 10px;
+  font-size: 0.625rem;
   margin-bottom: 9px;
 }
 .tree-toolbar p span {
@@ -286,7 +286,7 @@ input[type='range']::-moz-range-thumb {
 .legend {
   display: flex;
   gap: 22px;
-  font-size: 10px;
+  font-size: 0.625rem;
   color: #b9ce9d;
 }
 .legend span:last-child {
@@ -303,7 +303,7 @@ input[type='range']::-moz-range-thumb {
   border: 1px solid #3a4432;
   border-radius: 20px;
   padding: 8px 14px;
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: #a9b29e;
 }
 .filters button[aria-pressed='true'] {
@@ -333,26 +333,26 @@ input[type='range']::-moz-range-thumb {
 }
 .tree-symbol {
   color: var(--accent);
-  width: 35px;
+  width: 2.1875rem;
   flex-shrink: 0;
 }
 .tree-header .eyebrow {
-  font-size: 8px;
+  font-size: 0.5rem;
   color: var(--accent);
   margin-bottom: 6px;
 }
 .tree h2 {
-  font: 500 18px 'Space Grotesk';
+  font: 500 1.125rem 'Space Grotesk';
   margin: 0;
   letter-spacing: -0.5px;
 }
 .tree-count {
   margin-left: auto;
-  font: 10px 'Space Grotesk';
+  font: 0.625rem 'Space Grotesk';
   color: var(--accent);
 }
 .tree-subtitle {
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: #9fa994;
   margin: 14px 0 28px;
   line-height: 1.5;
@@ -360,6 +360,10 @@ input[type='range']::-moz-range-thumb {
 }
 .tree-canvas {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 .connections {
   position: absolute;
@@ -378,9 +382,9 @@ input[type='range']::-moz-range-thumb {
   opacity: 0.55;
 }
 .skill-node {
-  position: absolute;
+  position: relative;
   width: 86%;
-  height: 126px;
+  min-height: 7.875rem;
   text-align: left;
   display: flex;
   align-items: flex-start;
@@ -388,7 +392,7 @@ input[type='range']::-moz-range-thumb {
   background: #171d15;
   border: 1px solid #35402d;
   border-radius: 9px;
-  padding: 13px 12px;
+  padding: 0.8125rem 0.75rem;
   transition:
     border-color 0.2s,
     background 0.2s,
@@ -414,8 +418,8 @@ input[type='range']::-moz-range-thumb {
   place-items: center;
   border: 1px solid #46503c;
   border-radius: 7px;
-  width: 32px;
-  height: 34px;
+  width: 2rem;
+  height: 2.125rem;
   margin-top: 5px;
   color: #8f9a84;
   background: #192015;
@@ -425,8 +429,8 @@ input[type='range']::-moz-range-thumb {
   border-color: color-mix(in srgb, var(--accent) 40%, transparent);
 }
 .node-icon svg {
-  width: 21px;
-  height: 21px;
+  width: 1.3125rem;
+  height: 1.3125rem;
 }
 .node-copy {
   display: block;
@@ -436,7 +440,8 @@ input[type='range']::-moz-range-thumb {
   display: flex;
   justify-content: space-between;
   gap: 5px;
-  font: 8px 'Space Grotesk';
+  flex-wrap: wrap;
+  font: 0.625rem 'Space Grotesk';
   letter-spacing: 0.4px;
   color: #a0ac93;
   margin-bottom: 8px;
@@ -445,24 +450,21 @@ input[type='range']::-moz-range-thumb {
   color: var(--accent);
 }
 .node-meta span {
-  font-size: 7px;
+  font-size: inherit;
 }
 .node-copy strong {
   display: block;
-  font: 500 13px/1.25 'Space Grotesk';
+  font: 500 0.8125rem/1.25 'Space Grotesk';
   margin-bottom: 6px;
 }
 .locked .node-copy strong {
   color: #a9b19f;
 }
 .node-description {
-  font-size: 10px;
+  font-size: 0.625rem;
   line-height: 1.5;
   color: #a8b29c;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: block;
 }
 .inspector {
   position: sticky;
@@ -484,21 +486,21 @@ input[type='range']::-moz-range-thumb {
   border-radius: 9px;
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 2.875rem;
+  height: 2.875rem;
   flex-shrink: 0;
 }
 .inspector .eyebrow {
-  font-size: 8px;
+  font-size: 0.5rem;
   margin-bottom: 6px;
   color: #c9dfa1;
 }
 .inspector h2 {
-  font: 500 17px 'Space Grotesk';
+  font: 500 1.0625rem 'Space Grotesk';
   margin: 0 0 5px;
 }
 .inspector p:last-child {
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.5;
   color: #c0c9b4;
   margin: 0;
@@ -510,7 +512,7 @@ input[type='range']::-moz-range-thumb {
   border-radius: 7px;
   padding: 10px;
   white-space: nowrap;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 footer {
   display: flex;
@@ -520,18 +522,18 @@ footer {
   border-top: 1px solid #35402c;
   margin-top: 40px;
   padding: 25px 0 40px;
-  font: 9px 'Space Grotesk';
+  font: 0.5625rem 'Space Grotesk';
   letter-spacing: 1px;
   color: #9aa48d;
 }
 footer p {
   text-align: center;
-  font: 11px/1.7 'DM Sans';
+  font: 0.6875rem/1.7 'DM Sans';
   letter-spacing: 0;
 }
 @media (min-width: 1500px) {
   .node-description {
-    font-size: 11px;
+    font-size: 0.6875rem;
   }
 }
 @media (max-width: 1000px) {
@@ -539,37 +541,31 @@ footer p {
     gap: 16px;
   }
   .tree h2 {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
   .tree-header {
     gap: 5px;
   }
   .tree-symbol {
-    width: 26px;
+    width: 1.625rem;
   }
   .skill-node {
     padding: 10px 8px;
     gap: 7px;
   }
   .node-icon {
-    width: 26px;
-    height: 28px;
+    width: 1.625rem;
+    height: 1.75rem;
   }
   .node-copy strong {
-    font-size: 12px;
-  }
-  .node-meta {
-    font-size: 7px;
-  }
-  .node-meta span {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .build-panel {
     gap: 20px;
   }
   .hero-seal {
-    width: 120px;
-    height: 120px;
+    width: 7.5rem;
+    height: 7.5rem;
   }
   .legendary-tag {
     display: none;
@@ -580,11 +576,11 @@ footer p {
     height: 64px;
   }
   .brand {
-    font-size: 9px;
+    font-size: 0.5625rem;
     letter-spacing: 1px;
   }
   .version {
-    font-size: 8px;
+    font-size: 0.5rem;
   }
   .version span {
     padding: 0 3px;
@@ -593,18 +589,18 @@ footer p {
     padding: 34px 0 28px;
   }
   .hero .eyebrow {
-    font-size: 8px;
+    font-size: 0.5rem;
     letter-spacing: 1px;
   }
   h1 {
     letter-spacing: -2px;
-    font-size: 43px;
+    font-size: 2.6875rem;
   }
   .hero-seal {
     display: none;
   }
   .intro {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .build-panel {
     padding: 19px;
@@ -615,22 +611,22 @@ footer p {
     min-width: 68px;
   }
   .level > div {
-    font-size: 40px;
+    font-size: 2.5rem;
   }
   .level > div span {
     display: none;
   }
   .slider-label {
-    font-size: 11px;
+    font-size: 0.6875rem;
     display: block;
   }
   .slider-label > span {
     display: block;
-    font-size: 10px;
+    font-size: 0.625rem;
     margin-top: 5px;
   }
   .range-labels {
-    font-size: 7px;
+    font-size: 0.4375rem;
     letter-spacing: 0.3px;
   }
   .share-button {
@@ -642,7 +638,7 @@ footer p {
     gap: 13px;
   }
   .legendary p:last-child {
-    font-size: 11px;
+    font-size: 0.6875rem;
   }
   .tree-toolbar {
     margin-top: 32px;
@@ -662,13 +658,13 @@ footer p {
     margin: auto;
   }
   .tree h2 {
-    font-size: 21px;
+    font-size: 1.3125rem;
   }
   .tree-header {
     gap: 12px;
   }
   .tree-symbol {
-    width: 32px;
+    width: 2rem;
   }
   .tree-subtitle {
     min-height: 0;
@@ -679,20 +675,14 @@ footer p {
     gap: 14px;
   }
   .node-icon {
-    width: 34px;
-    height: 36px;
+    width: 2.125rem;
+    height: 2.25rem;
   }
   .node-copy strong {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .node-description {
-    font-size: 11px;
-  }
-  .node-meta {
-    font-size: 9px;
-  }
-  .node-meta span {
-    font-size: 8px;
+    font-size: 0.6875rem;
   }
   .inspector {
     padding: 14px;
@@ -703,10 +693,10 @@ footer p {
     display: none;
   }
   .inspector h2 {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .inspector p:last-child {
-    font-size: 11px;
+    font-size: 0.6875rem;
   }
   .inspector button span {
     display: none;
@@ -721,7 +711,7 @@ footer p {
     margin: 0;
   }
   .filters button {
-    font-size: 10px;
+    font-size: 0.625rem;
     padding: 8px 10px;
   }
 }

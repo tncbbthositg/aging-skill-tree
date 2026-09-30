@@ -46,8 +46,8 @@ export default function Icon({ name, ...props }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      width="24"
-      height="24"
+      width="1.5rem"
+      height="1.5rem"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"

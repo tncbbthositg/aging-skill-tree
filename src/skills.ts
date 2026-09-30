@@ -284,3 +284,7 @@ export const hasLegendary = (age: number): boolean =>
     const skill = allSkills.find((skill) => skill.id === id);
     return skill !== undefined && age >= skill.age;
   });
+
+const eyesightIds = new Set(['focus', 'low-light', 'contrast', 'flashlight', 'reading', 'scaling']);
+export const eyesightUnlocks = (age: number): number =>
+  unlockedSkills(age).filter((skill) => eyesightIds.has(skill.id)).length;

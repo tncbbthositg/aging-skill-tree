@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef, useState } from 'react';
 import type { CSSVariables, SkillDiscipline } from '../types';
 
 interface SkillTreeProps {
@@ -8,9 +9,26 @@ interface SkillTreeProps {
 }
 
 import Icon from './Icon';
-const rowHeight = 146;
 const xFor = (index: number) => (index % 3 === 0 ? 0 : index % 3 === 1 ? 14 : 7);
 export default function SkillTree({ tree, age, selected, onSelect }: SkillTreeProps) {
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const [layout, setLayout] = useState({ height: 1, centers: [] as number[] });
+  useLayoutEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const measure = () => {
+      const cards = Array.from(canvas.querySelectorAll<HTMLButtonElement>('.skill-node'));
+      setLayout({
+        height: canvas.offsetHeight,
+        centers: cards.map((card) => card.offsetTop + card.offsetHeight / 2),
+      });
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(canvas);
+    canvas.querySelectorAll('.skill-node').forEach((card) => observer.observe(card));
+    measure();
+    return () => observer.disconnect();
+  }, [tree]);
   const treeStyle: CSSVariables = { '--accent': tree.color };
   const count = tree.skills.filter((skill) => age >= skill.age).length;
   return (
@@ -30,10 +48,10 @@ export default function SkillTree({ tree, age, selected, onSelect }: SkillTreePr
         </span>
       </header>
       <p className="tree-subtitle">{tree.subtitle}</p>
-      <div className="tree-canvas" style={{ height: tree.skills.length * rowHeight }}>
+      <div className="tree-canvas" ref={canvasRef}>
         <svg
           className="connections"
-          viewBox={`0 0 100 ${tree.skills.length * rowHeight}`}
+          viewBox={`0 0 100 ${layout.height}`}
           preserveAspectRatio="none"
           aria-hidden="true"
         >
@@ -42,9 +60,9 @@ export default function SkillTree({ tree, age, selected, onSelect }: SkillTreePr
               const parentIndex = tree.skills.findIndex((item) => item.id === parent);
               if (parentIndex < 0) return null;
               const x1 = xFor(parentIndex) + 4,
-                y1 = parentIndex * rowHeight + 65,
+                y1 = layout.centers[parentIndex] ?? 0,
                 x2 = xFor(index) + 4,
-                y2 = index * rowHeight + 65;
+                y2 = layout.centers[index] ?? 0;
               return (
                 <path
                   key={`${parent}-${skill.id}`}
@@ -60,7 +78,9 @@ export default function SkillTree({ tree, age, selected, onSelect }: SkillTreePr
           <button
             key={skill.id}
             className={`skill-node ${age >= skill.age ? 'unlocked' : 'locked'} ${selected === skill.id ? 'selected' : ''}`}
-            style={{ top: index * rowHeight, left: `${xFor(index)}%` }}
+            style={{
+              marginLeft: `${xFor(index)}%`,
+            }}
             onClick={() => onSelect(skill.id)}
             aria-pressed={selected === skill.id}
             aria-label={`${skill.name}, level ${skill.age}, ${age >= skill.age ? 'unlocked' : 'locked'}. ${skill.description}`}

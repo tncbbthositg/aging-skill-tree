@@ -1,7 +1,33 @@
 {
-  "name": "aging-skill-tree", "private": true, "version": "0.1.0", "type": "module",
-  "scripts": {"dev":"vite", "build":"vite build", "preview":"vite preview", "test":"node --test tests/*.test.js"},
-  "engines": {"node": ">=22.12.0"},
-  "dependencies": {"react":"19.3.0", "react-dom":"19.3.0"},
-  "devDependencies": {"vite":"8.3.1", "@vitejs/plugin-react":"6.1.1"}
+  "name": "aging-skill-tree",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "yarn typecheck && vite build",
+    "preview": "vite preview",
+    "test": "tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "24",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "prettier": "3.9.9",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.1"
+  },
+  "packageManager": "yarn@1.22.22"
 }

@@ -17,10 +17,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
+          cache: yarn
+      - name: Activate pinned Yarn version
+        run: |
+          corepack enable
+          corepack prepare yarn@1.22.22 --activate
+      - run: yarn install --frozen-lockfile
+      - run: yarn format:check
+      - run: yarn test
+      - run: yarn build
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
         with:

@@ -1,6 +1,6 @@
 # Aging Skill Tree
 
-Another year older. Another questionable ability. An interactive, intentionally ridiculous RPG skill tree about getting older, built with React + TypeScript + Vite. All ages are fictional joke thresholds.
+Another year older. Another questionable ability. An interactive, intentionally ridiculous RPG skill tree about getting older, built with React + TypeScript + Vite + Tailwind CSS. All ages are fictional joke thresholds.
 
 ## Run locally
 
@@ -35,7 +35,7 @@ Run `yarn format` to format source, styles, tests, configuration, and documentat
 
 Edit `src/skills.ts`: each discipline has a name, subtitle, color, icon and skills. Each skill has a unique ID, unlock age, title, description, icon, optional parent IDs and ability type. Parents must refer to earlier skills in the same discipline; they define visual connections, not additional unlock conditions. Age is the only unlock requirement.
 
-Add SVG icons in `src/components/Icon.tsx`. `SkillTree.tsx` draws the data; `main.tsx` owns age, selection, filters and sharing; `style.css` handles layout. The selected-skill panel always shows the full description when a card excerpt is truncated. Shared age input is validated and clamped. Legendary requirements are listed separately in `legendaryIds`.
+Add SVG icons in `src/components/Icon.tsx`. `SkillTree.tsx` draws the data; `main.tsx` owns age, selection, filters and sharing; Tailwind utility classes in the components handle layout and responsive states. `style.css` contains the Tailwind import, font theme, global defaults, and browser-specific range thumbs. The selected-skill panel always shows the full description when a card excerpt is truncated. Shared age input is validated and clamped. Legendary requirements are listed separately in `legendaryIds`.
 
 ## GitHub Pages
 

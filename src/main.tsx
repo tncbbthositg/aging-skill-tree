@@ -56,28 +56,33 @@ function App() {
   if (!skill) throw new Error(`Unknown selected skill: ${selected}`);
   return (
     <>
-      <header className="topbar">
-        <a href="?age=45" className="brand">
+      <header className="mx-auto flex h-[83px] max-w-[1440px] items-center justify-between border-b border-white/10 px-[5%] max-[760px]:h-16">
+        <a
+          href="?age=45"
+          className="flex items-center gap-3 text-xs font-bold tracking-[2px] [&_svg]:text-[#c0d598] max-[760px]:text-[0.5625rem] max-[760px]:tracking-[1px]"
+        >
           <Icon name="star" /> THE HUMAN PATCH NOTES
         </a>
-        <span className="version">
+        <span className="font-display text-[0.625rem] tracking-[1.5px] text-[#a3aa96] max-[760px]:text-[0.5rem] [&_span]:px-[15px] [&_span]:text-[#4b5344] max-[760px]:[&_span]:px-[3px]">
           EST. AT BIRTH <span> / </span> v{age}.0
         </span>
       </header>
-      <main>
-        <section className="hero">
+      <main className="mx-auto max-w-[1440px] px-[5%]">
+        <section className="flex items-center justify-between pt-[58px] pb-9 max-[760px]:pt-[34px] max-[760px]:pb-7">
           <div>
-            <p className="eyebrow">A ROLE-PLAYING GAME YOU CAN’T OPT OUT OF</p>
-            <h1>
-              Aging skill tree<span>.</span>
+            <p className="mb-3 font-display text-[0.625rem] font-semibold tracking-[1.8px] text-[#a8b19b] max-[760px]:text-[0.5rem] max-[760px]:tracking-[1px]">
+              A ROLE-PLAYING GAME YOU CAN’T OPT OUT OF
+            </p>
+            <h1 className="my-5 font-display text-[clamp(2.375rem,5.5vw,4.75rem)] leading-[1.05] font-medium tracking-[-4px] max-[760px]:text-[2.6875rem] max-[760px]:tracking-[-2px]">
+              Aging skill tree<span className="text-[#bbd98a]">.</span>
             </h1>
-            <p className="intro">
+            <p className="m-0 text-base leading-[1.65] text-[#aab19f] max-[760px]:text-sm">
               Another year older. Another questionable ability.
               <br />
               Discover the perks nobody asked to unlock.
             </p>
           </div>
-          <div className="hero-seal">
+          <div className="mr-5 flex size-35 rotate-12 flex-col items-center justify-center gap-[9px] rounded-full border border-[#82956555] text-center font-display text-[0.625rem] leading-[1.7] tracking-[2px] text-[#bcd393] max-[1000px]:size-30 max-[760px]:hidden">
             <Icon name="star" />
             <span>
               EXPERIENCE
@@ -88,22 +93,30 @@ function App() {
             </span>
           </div>
         </section>
-        <section className="build-panel" aria-label="Your age and build">
-          <div className="level">
-            <span className="eyebrow">YOUR LEVEL</span>
-            <div>
+        <section
+          className="flex items-center gap-[35px] rounded-[14px] border border-[#4c5841] bg-[#20271c] px-[30px] py-6 max-[1000px]:gap-5 max-[760px]:flex-wrap max-[760px]:p-[19px]"
+          aria-label="Your age and build"
+        >
+          <div className="min-w-[100px] max-[760px]:min-w-[68px]">
+            <span className="mb-3 font-display text-[0.5625rem] font-semibold tracking-[1.8px] text-[#a8b19b]">
+              YOUR LEVEL
+            </span>
+            <div className="font-display text-5xl leading-none font-medium tracking-[-2px] max-[760px]:text-[2.5rem]">
               {age}
-              <span>years</span>
+              <span className="pl-2 font-sans text-xs font-normal tracking-normal text-[#a2ad95] max-[760px]:hidden">
+                years
+              </span>
             </div>
           </div>
-          <div className="slider-wrap">
-            <div className="slider-label">
+          <div className="flex-1">
+            <div className="mb-[14px] flex justify-between gap-[14px] text-xs max-[760px]:block max-[760px]:text-[0.6875rem]">
               <label htmlFor="age">Slide into your next existential crisis</label>
-              <span>
+              <span className="whitespace-nowrap text-[#c6d8a4] max-[760px]:mt-[5px] max-[760px]:block max-[760px]:text-[0.625rem]">
                 {count} / {allSkills.length} perks
               </span>
             </div>
             <input
+              className="my-[8px] mb-[18px] h-[5px] w-full cursor-pointer appearance-none rounded-[5px] bg-[linear-gradient(to_right,#bfd78d_var(--progress),#424b38_var(--progress))]"
               id="age"
               type="range"
               min="20"
@@ -113,19 +126,23 @@ function App() {
               style={sliderStyle}
               aria-valuetext={`${age} years old, ${count} abilities unlocked`}
             />
-            <div className="range-labels">
+            <div className="flex justify-between font-display text-[0.5625rem] tracking-[1px] text-[#aab49d] max-[760px]:text-[0.4375rem] max-[760px]:tracking-[0.3px]">
               <span>20 · FACTORY SETTINGS</span>
               <span>80 · LEGACY HARDWARE</span>
             </div>
           </div>
-          <button className="share-button" onClick={share}>
-            Share my build <span>↗</span>
+          <button
+            className="rounded-[7px] border-0 bg-[#c6dd9e] px-[18px] py-[14px] text-xs font-bold whitespace-nowrap text-[#18200f] hover:bg-[#deefbd] max-[760px]:w-full max-[760px]:p-[11px]"
+            onClick={share}
+          >
+            Share my build <span className="ml-[22px]">↗</span>
           </button>
         </section>
-        <div className="share-status" role="status">
+        <div className="min-h-7 py-[6px] text-xs text-[#c6dd9e]" role="status">
           {shareMessage}
           {shareFallback && (
             <input
+              className="mt-2 block w-full border-2 border-[#767676] bg-[#3b3b3b] p-2.5"
               aria-label="Shareable build link"
               readOnly
               value={shareFallback}
@@ -134,41 +151,47 @@ function App() {
           )}
         </div>
         <section
-          className={`legendary ${hasLegendary(age) ? 'earned' : ''}`}
+          className={`flex items-center gap-5 rounded-[10px] border px-[26px] py-[21px] [&>svg]:size-8 [&>svg]:shrink-0 max-[760px]:gap-[13px] max-[760px]:p-[18px] ${hasLegendary(age) ? 'border-[#665b33] bg-[linear-gradient(100deg,#2d2b1a,#1b2117)] text-[#e2cd8f]' : 'border-[#3b4133] bg-[#1c2118] text-[#9ea893]'}`}
           aria-label="Legendary synergy"
         >
           <Icon name="star" />
           <div>
-            <p className="eyebrow">
+            <p className="mb-[5px] font-display text-[0.5625rem] font-semibold tracking-[1.8px]">
               {hasLegendary(age) ? 'LEGENDARY SYNERGY UNLOCKED' : 'LEGENDARY SYNERGY · LEVEL 45'}
             </p>
-            <h2>Fully Operational Adult</h2>
-            <p>
+            <h2 className="mb-[5px] font-display text-lg font-medium">Fully Operational Adult</h2>
+            <p className="m-0 text-xs leading-normal text-[#b9b9a6] max-[760px]:text-[0.6875rem]">
               {hasLegendary(age)
                 ? 'You are tired, slightly sore, and somehow furious that a light was left on downstairs.'
                 : 'Requires Thermostat Awareness + Creaking Louder Than the Stairs + Midday Maintenance Window.'}
             </p>
           </div>
-          <span className="legendary-tag">
+          <span className="ml-auto font-display text-[0.5625rem] tracking-[1px] whitespace-nowrap max-[1000px]:hidden">
             {hasLegendary(age) ? '+0 ACTUAL BENEFITS' : 'STILL LOADING'}
           </span>
         </section>
-        <div className="tree-toolbar">
+        <div className="mt-11 mb-5 flex items-center justify-between max-[760px]:mt-8">
           <div>
-            <p className="eyebrow">CHOOSE YOUR DETERIORATION</p>
-            <p>
-              Three disciplines. Zero respecs. <span>Tap a skill to inspect it.</span>
+            <p className="mb-[9px] font-display text-[0.625rem] font-semibold tracking-[1.8px] text-[#c4cbb9]">
+              CHOOSE YOUR DETERIORATION
+            </p>
+            <p className="m-0 text-xs text-[#c4cbb9]">
+              Three disciplines. Zero respecs.{' '}
+              <span className="text-[#8f9a85] max-[760px]:mt-[5px] max-[760px]:block">
+                Tap a skill to inspect it.
+              </span>
             </p>
           </div>
-          <div className="legend">
+          <div className="flex gap-[22px] text-[0.625rem] text-[#b9ce9d] max-[760px]:flex-col max-[760px]:gap-2">
             <span>● Unlocked</span>
-            <span>○ Coming for you</span>
+            <span className="text-[#9ba48f]">○ Coming for you</span>
           </div>
         </div>
-        <nav className="filters" aria-label="Filter disciplines">
+        <nav className="mb-6 flex flex-wrap gap-2" aria-label="Filter disciplines">
           {filters.map((tree) => (
             <button
               key={tree.id}
+              className="rounded-full border border-[#3a4432] bg-transparent px-[14px] py-2 text-[0.6875rem] text-[#a9b29e] aria-pressed:border-[#c1d795] aria-pressed:bg-[#c1d795] aria-pressed:text-[#15200f] max-[760px]:px-2.5 max-[760px]:text-[0.625rem]"
               aria-pressed={activeTree === tree.id}
               onClick={() => setActiveTree(tree.id)}
             >
@@ -176,7 +199,9 @@ function App() {
             </button>
           ))}
         </nav>
-        <div className={`trees ${activeTree !== 'all' ? 'single' : ''}`}>
+        <div
+          className={`grid items-start gap-[26px] max-[1000px]:gap-4 max-[760px]:mx-auto max-[760px]:max-w-[480px] max-[760px]:gap-[30px] ${activeTree !== 'all' ? 'grid-cols-[minmax(0,580px)] justify-center' : 'grid-cols-3 max-[760px]:grid-cols-1'}`}
+        >
           {trees
             .filter((tree) => activeTree === 'all' || tree.id === activeTree)
             .map((tree) => (
@@ -189,28 +214,37 @@ function App() {
               />
             ))}
         </div>
-        <aside className="inspector" aria-label="Selected skill" aria-live="polite">
-          <div className="inspector-icon">
+        <aside
+          className="sticky bottom-[18px] z-2 mt-5 flex items-center gap-[18px] rounded-xl border border-[#728458] bg-[#273020f5] px-6 py-[19px] shadow-[0_8px_40px_#0009] max-[760px]:bottom-2 max-[760px]:gap-2.5 max-[760px]:p-[14px]"
+          aria-label="Selected skill"
+          aria-live="polite"
+        >
+          <div className="grid size-[2.875rem] shrink-0 place-items-center rounded-[9px] border border-[#657951] text-[#c9dfa1] max-[760px]:hidden">
             <Icon name={skill.icon} />
           </div>
           <div>
-            <p className="eyebrow">
+            <p className="mb-[6px] font-display text-xs leading-normal font-semibold tracking-[1px] text-[#c9dfa1]">
               {skill.type} · LEVEL {skill.age} ·{' '}
               {age >= skill.age ? 'UNLOCKED' : `UNLOCKS IN ${skill.age - age} YEARS`}
             </p>
-            <h2>{skill.name}</h2>
-            <p>{skill.description}</p>
+            <h2 className="mb-[5px] font-display text-[1.0625rem] font-medium max-[760px]:text-sm">
+              {skill.name}
+            </h2>
+            <p className="m-0 text-xs leading-normal text-[#c0c9b4] max-[760px]:text-[0.6875rem]">
+              {skill.description}
+            </p>
           </div>
           <button
+            className="ml-auto rounded-[7px] border border-[#5f6d50] bg-transparent p-2.5 text-xs whitespace-nowrap"
             aria-label="Return to age slider"
             onClick={() => document.getElementById('age')?.focus()}
           >
-            ↑ <span>Age</span>
+            ↑ <span className="max-[760px]:hidden">Age</span>
           </button>
         </aside>
-        <footer>
+        <footer className="mt-10 flex items-center justify-between gap-5 border-t border-[#35402c] pt-[25px] pb-10 font-display text-[0.5625rem] tracking-[1px] text-[#9aa48d] max-[760px]:flex-wrap max-[760px]:justify-center">
           <span>AGING SKILL TREE</span>
-          <p>
+          <p className="my-[1em] text-center font-sans text-[0.6875rem] leading-[1.7] tracking-normal max-[760px]:order-3 max-[760px]:m-0 max-[760px]:w-full">
             All ages are made up. All noises are suspicious.
             <br />A joke about getting older, not a forecast.
           </p>

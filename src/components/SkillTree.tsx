@@ -17,7 +17,7 @@ export default function SkillTree({ tree, age, selected, onSelect }: SkillTreePr
     const canvas = canvasRef.current;
     if (!canvas) return;
     const measure = () => {
-      const cards = Array.from(canvas.querySelectorAll<HTMLButtonElement>('.skill-node'));
+      const cards = Array.from(canvas.querySelectorAll<HTMLButtonElement>('[data-skill-node]'));
       setLayout({
         height: canvas.offsetHeight,
         centers: cards.map((card) => card.offsetTop + card.offsetHeight / 2),
@@ -25,32 +25,39 @@ export default function SkillTree({ tree, age, selected, onSelect }: SkillTreePr
     };
     const observer = new ResizeObserver(measure);
     observer.observe(canvas);
-    canvas.querySelectorAll('.skill-node').forEach((card) => observer.observe(card));
+    canvas.querySelectorAll('[data-skill-node]').forEach((card) => observer.observe(card));
     measure();
     return () => observer.disconnect();
   }, [tree]);
   const treeStyle: CSSVariables = { '--accent': tree.color };
   const count = tree.skills.filter((skill) => age >= skill.age).length;
   return (
-    <section className="tree" style={treeStyle} aria-labelledby={`tree-${tree.id}`}>
-      <header className="tree-header">
-        <div className="tree-symbol">
+    <section className="min-w-0" style={treeStyle} aria-labelledby={`tree-${tree.id}`}>
+      <header className="flex items-center gap-2.5 border-t-2 border-[var(--accent)] pt-5 max-[1000px]:gap-[5px] max-[760px]:gap-3">
+        <div className="w-[2.1875rem] shrink-0 text-[var(--accent)] max-[1000px]:w-[1.625rem] max-[760px]:w-8">
           <Icon name={tree.icon} />
         </div>
         <div>
-          <span className="eyebrow">
+          <span className="mb-[6px] font-display text-[0.5rem] font-semibold tracking-[1.8px] text-[var(--accent)]">
             DISCIPLINE {tree.id === 'structure' ? '01' : tree.id === 'sensors' ? '02' : '03'}
           </span>
-          <h2 id={`tree-${tree.id}`}>{tree.name}</h2>
+          <h2
+            className="m-0 font-display text-lg font-medium tracking-[-0.5px] max-[1000px]:text-[0.9375rem] max-[760px]:text-[1.3125rem]"
+            id={`tree-${tree.id}`}
+          >
+            {tree.name}
+          </h2>
         </div>
-        <span className="tree-count">
+        <span className="ml-auto font-display text-[0.625rem] text-[var(--accent)]">
           {count}/{tree.skills.length}
         </span>
       </header>
-      <p className="tree-subtitle">{tree.subtitle}</p>
-      <div className="tree-canvas" ref={canvasRef}>
+      <p className="mt-[14px] mb-7 min-h-[33px] text-[0.6875rem] leading-normal text-[#9fa994] max-[760px]:mb-5 max-[760px]:min-h-0">
+        {tree.subtitle}
+      </p>
+      <div className="relative flex flex-col gap-5 pb-5" ref={canvasRef}>
         <svg
-          className="connections"
+          className="absolute inset-0 h-full w-full overflow-visible"
           viewBox={`0 0 100 ${layout.height}`}
           preserveAspectRatio="none"
           aria-hidden="true"
@@ -66,7 +73,7 @@ export default function SkillTree({ tree, age, selected, onSelect }: SkillTreePr
               return (
                 <path
                   key={`${parent}-${skill.id}`}
-                  className={age >= skill.age ? 'lit' : ''}
+                  className={`fill-none stroke-[1.5] ${age >= skill.age ? 'stroke-[var(--accent)] opacity-55' : 'stroke-[#3a4332]'}`}
                   d={`M ${x1} ${y1} C ${x1} ${y1 + 90}, ${x2} ${y2 - 90}, ${x2} ${y2}`}
                   vectorEffect="non-scaling-stroke"
                 />
@@ -77,7 +84,8 @@ export default function SkillTree({ tree, age, selected, onSelect }: SkillTreePr
         {tree.skills.map((skill, index) => (
           <button
             key={skill.id}
-            className={`skill-node ${age >= skill.age ? 'unlocked' : 'locked'} ${selected === skill.id ? 'selected' : ''}`}
+            data-skill-node
+            className={`relative flex min-h-[7.875rem] w-[86%] items-start gap-[11px] rounded-[9px] border px-3 py-[0.8125rem] text-left transition-[border-color,background,transform] duration-200 hover:-translate-y-[2px] hover:border-[var(--accent)] motion-reduce:transition-none max-[1000px]:gap-[7px] max-[1000px]:px-2 max-[1000px]:py-2.5 max-[760px]:gap-[14px] max-[760px]:p-[15px] ${age >= skill.age ? 'bg-[#22291e]' : 'bg-[#171d15]'} ${selected === skill.id ? 'border-[var(--accent)] shadow-[0_0_0_1px_var(--accent),0_0_28px_color-mix(in_srgb,var(--accent)_8%,transparent)]' : age >= skill.age ? 'border-[color-mix(in_srgb,var(--accent)_35%,#22291e)]' : 'border-[#35402d]'}`}
             style={{
               marginLeft: `${xFor(index)}%`,
             }}
@@ -85,15 +93,25 @@ export default function SkillTree({ tree, age, selected, onSelect }: SkillTreePr
             aria-pressed={selected === skill.id}
             aria-label={`${skill.name}, level ${skill.age}, ${age >= skill.age ? 'unlocked' : 'locked'}. ${skill.description}`}
           >
-            <span className="node-icon">
+            <span
+              className={`mt-[5px] grid h-[2.125rem] w-8 shrink-0 place-items-center rounded-[7px] border bg-[#192015] [&_svg]:size-[1.3125rem] max-[1000px]:h-7 max-[1000px]:w-[1.625rem] max-[760px]:h-9 max-[760px]:w-[2.125rem] ${age >= skill.age ? 'border-[color-mix(in_srgb,var(--accent)_40%,transparent)] text-[var(--accent)]' : 'border-[#46503c] text-[#8f9a84]'}`}
+            >
               <Icon name={skill.icon} />
             </span>
-            <span className="node-copy">
-              <span className="node-meta">
+            <span className="block min-w-0">
+              <span
+                className={`mb-2 flex flex-wrap justify-between gap-[5px] font-display text-[0.625rem] tracking-[0.4px] ${age >= skill.age ? 'text-[var(--accent)]' : 'text-[#a0ac93]'}`}
+              >
                 LVL {skill.age} <span>{age >= skill.age ? '✦ UNLOCKED' : '◇ LOCKED'}</span>
               </span>
-              <strong>{skill.name}</strong>
-              <span className="node-description">{skill.description}</span>
+              <strong
+                className={`mb-[6px] block font-display text-[0.8125rem] leading-[1.25] font-medium max-[1000px]:text-xs max-[760px]:text-sm ${age >= skill.age ? '' : 'text-[#a9b19f]'}`}
+              >
+                {skill.name}
+              </strong>
+              <span className="block text-[0.625rem] leading-normal text-[#a8b29c] min-[1500px]:text-[0.6875rem] max-[760px]:text-[0.6875rem]">
+                {skill.description}
+              </span>
             </span>
           </button>
         ))}
